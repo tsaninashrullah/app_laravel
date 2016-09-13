@@ -5,7 +5,7 @@
     <div class="content">
     <center><h1>HELLO WORD</h1></center>
     <div class="parallax-container">
-      <div class="parallax"><img src="images/1.jpg"></div>
+      <div class="parallax"><img src="images/2.jpg"></div>
     </div>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -24,6 +24,7 @@
     $(document).ready(function(){
       $('.carousel').carousel();
       $('.parallax').parallax();
+      
     });
 </script>
 @endsection
