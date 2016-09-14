@@ -11,12 +11,5 @@
 |
 */
 
-Route::get('/home', function () {
-    return view('home');
-});
-Route::get('/profile', function () {
-    return view('profile');
-});
-Route::get('/contact', function () {
-    return view('contact');
-});
+Route::resource('/employees', 'EmployeesController');
+Route::post('employees.store', 'EmployeesController@store');

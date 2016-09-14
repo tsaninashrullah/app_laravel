@@ -13,4 +13,7 @@
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
+Route::get('/contact', 'HomeController@contact')->name('contact');
+Route::get('/home', 'HomeController@home')->name('home');
+Route::get('/profile', 'HomeController@profile')->name('profile');
