@@ -27,7 +27,7 @@ class EmployeesRequest extends Request
             'name' => 'required|max:50|min:3',
             'age' => 'required|max:2|min:1',
             'address' => 'required',
-            'email' => 'required|unique',
+            'email' => 'required',
         ];
     }
     public function messages(){
@@ -38,7 +38,7 @@ class EmployeesRequest extends Request
             'age.max' => 'Please check your age',
             'address.required' => 'Er, you forgot your address!',
             'email.required' => 'Er, you forgot your Email address!',
-            'email.unique' => 'Email already taken!',
+            // 'email.unique' => 'Email already taken!',
         ];
     }
 }
