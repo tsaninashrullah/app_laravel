@@ -24,6 +24,18 @@
     <!-- Navbar -->
      @include('shared.header')
 
+    <!-- ALERT -->
+    @if (Session::has('error'))
+        <div class="session-flash danger">
+            <h3 align="center">{{Session::get('error')}}</h3>
+        </div>
+    @endif
+
+    @if (Session::has('notice'))
+        <div class="session-flash success">
+            <h3 align="center">{{Session::get('notice')}}</h3>
+        </div>
+    @endif
      <!-- Content -->
     <div class="container">
         @yield('content')

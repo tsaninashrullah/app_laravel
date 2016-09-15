@@ -3,16 +3,16 @@
       <a href="#!" class="brand-logo">Logo</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="fa fa-list"></i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="home">Home</a></li>
-        <li><a href="profile">Profile</a></li>
-        <li><a href="contact">Contact</a></li>
-        <li><a href="employees">Employee</a></li>
+        <li>{{ link_to('home', 'Home', array('class' => 'waves-effect')) }}</li>
+        <li>{{ link_to('profile', 'Profile', array('class' => 'waves-effect')) }}</li>
+        <li>{{ link_to('contact', 'Contact', array('class' => 'waves-effect')) }}</li>
+        <li>{{ link_to('employees', 'Employee', array('class' => 'waves-effect')) }}</li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
-        <li><a href="home">Home</a></li>
-        <li><a href="profile">Components</a></li>
-        <li><a href="contact">Contact</a></li>
-        <li><a href="employees">Employee</a></li>      
+        <li>{{ link_to('home', 'Home', array('class' => 'waves-effect')) }}</li>
+        <li>{{ link_to('profile', 'Profile', array('class' => 'waves-effect')) }}</li>
+        <li>{{ link_to('contact', 'Contact', array('class' => 'waves-effect')) }}</li>
+        <li>{{ link_to('employees', 'Employee', array('class' => 'waves-effect')) }}</li>
       </ul>
     </div>
   </nav>
