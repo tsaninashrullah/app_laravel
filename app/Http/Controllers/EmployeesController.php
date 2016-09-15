@@ -21,8 +21,9 @@ class EmployeesController extends Controller
      */
     public function index()
     {
+        $page = Employees::paginate(2);
         $employees = Employees::all();
-        return view('employees.index')->with('employees', $employees);
+        return view('employees.index')->with('employees', $employees)->with('pagination', $page);
     }
 
     /**
@@ -41,7 +42,7 @@ class EmployeesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmployeesRequest $request)
     {
         // $validate = EmployeesRequest::make($request->all(), Employees::valid());
         //   if($validate->fails()) {
@@ -49,8 +50,8 @@ class EmployeesController extends Controller
         //     ->withErrors($validate)
         //     ->withInput();
         //   } else {
-        //     Employees::create($request->all());
-        //     return Redirect::to('employees');
+        //     Employees::save($request->all());
+        //     return Redirect('employees');
         //   }
 
         $employee = new Employees();
@@ -62,7 +63,8 @@ class EmployeesController extends Controller
                 
         $employee->save();
         Session::flash('notice', 'Success add employee');
-        return view('employees');
+        $employees = Employees::all();
+        return redirect('employees')->with('employees', $employees);
     }
 
     /**
@@ -86,7 +88,9 @@ class EmployeesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $employees = Employees::find($id);
+            return view('employees.edit')
+        ->with('employee', $employees);
     }
 
     /**
@@ -96,9 +100,13 @@ class EmployeesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EmployeesRequest $request, $id)
     {
-        //
+    $employees = Employees::find($id);
+    $employees->update($request->all());
+    $employee = Employees::all();
+    Session::flash('notice', 'Success update employee');
+    return Redirect('employees')->with('employees', $employee);
     }
 
     /**
@@ -109,6 +117,14 @@ class EmployeesController extends Controller
      */
     public function destroy($id)
     {
-        //
+    $employees = Employees::all();
+    $employee_id = Employees::find($id);
+        if ($employee_id->delete()) {
+          Session::flash('notice', 'Employee success delete');
+          return Redirect('employees')->with('employees', $employees);
+        } else {
+          Session::flash('error', 'Employee fails delete');
+          return Redirect('employees');
+        }
     }
 }
